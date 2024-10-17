@@ -9,14 +9,7 @@ export const routing = defineRouting({
   defaultLocale: "zh-CN",
 
   // 默认语言环境不带有语言前缀
-  localePrefix: {
-    mode: "as-needed",
-    prefixes: {
-      "en": "/en",
-      "zh-CN": "/zh",
-      // (/zh will be used as-is)
-    },
-  },
+  localePrefix: "as-needed",
 });
 
 // Lightweight wrappers around Next.js' navigation APIs

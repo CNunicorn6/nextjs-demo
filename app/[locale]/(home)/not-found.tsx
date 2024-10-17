@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import styles from '@/app/styles/not-found.module.css'; // 使用 CSS 模块
+import styles from '@/styles/not-found.module.css'; // 使用 CSS 模块
 
 export default function NotFound() {
   const t = useTranslations('Errors.404');

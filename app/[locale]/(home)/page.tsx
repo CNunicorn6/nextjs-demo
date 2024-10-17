@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import { signIn } from "@/auth"
+import UserAuthInfo from "@/components/UserAuthInfo"
 
 interface Props {
     params: {
@@ -10,6 +12,7 @@ interface Props {
 export default function Page({ params: { locale } }: Props) {
 
     const t = useTranslations('HomePage');
+
 
     return (
         <div>
@@ -35,6 +38,26 @@ export default function Page({ params: { locale } }: Props) {
                     </li>
                 </ul>
             </label>
+        
+            <div>登录</div>
+            <form
+                action={async (formData) => {
+                    "use server"
+                    await signIn("credentials", formData)
+                }}
+            >
+                <input type="hidden" name="csrfToken" value="csrfToken" />
+                <label>
+                    Email
+                    <input type="text" id="email" name="email" />
+                </label>
+                <label>
+                    Password
+                    <input type="password" id="password" name="password" />
+                </label>
+                <button type="submit">Sign in</button>
+            </form>
+            <UserAuthInfo />
         </div>
     );
 }
