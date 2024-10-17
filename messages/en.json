@@ -1,0 +1,50 @@
+{
+    "HomePage": {
+      "title": "Home",
+      "welcomeMessage": "Welcome to our website",
+      "description": "This is a sample application built with Next.js",
+      "aboutLinkText": "Learn more about us",
+      "helpLinkText": "Visit Help Page",
+      "language": "Language",
+      "languageSwitch": "Select your preferred language",
+      "en": "English",
+      "zh-CN": "Simplified Chinese"
+    },
+    "AboutPage": {
+      "title": "About Us",
+      "description": "We are a company dedicated to providing quality services"
+    },
+    "Contact": {
+      "title": "Contact Us",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address"
+    },
+    "Errors": {
+      "404": {
+        "title": "404 - Page Not Found",
+        "message": "Sorry, the page you are looking for does not exist.",
+        "homeLink": "Go to Home",
+        "previousPageLink": "Go to Previous Page",
+        "helpLink": "Visit Help Page"
+      },
+      "500": {
+        "title": "500 - Server Error",
+        "message": "Sorry, there was a server error. Please try again later."
+      }
+    },
+    "Navigation": {
+      "home": "Home",
+      "about": "About Us",
+      "contact": "Contact Us"
+    },
+    "Buttons": {
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "retry": "Retry"
+    },
+    "Metadata": {
+      "title": "Multilingual Website",
+      "description": "This is a sample application for a multilingual website"
+    }
+  }

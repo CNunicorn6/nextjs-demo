@@ -1,0 +1,50 @@
+{
+  "HomePage": {
+    "title": "首页",
+    "welcomeMessage": "欢迎来到我们的网站",
+    "description": "这是一个使用 Next.js 构建的示例应用程序",
+    "aboutLinkText": "了解更多关于我们的信息",
+    "helpLinkText": "访问帮助页面",
+    "language": "语言",
+    "languageSwitch": "请选择您的首选语言",
+    "en": "英文",
+    "zh-CN": "简体中文"
+  },
+  "AboutPage": {
+    "title": "关于我们",
+    "description": "我们是一家致力于提供优质服务的公司"
+  },
+  "Contact": {
+    "title": "联系我们",
+    "phone": "电话",
+    "email": "电子邮件",
+    "address": "地址"
+  },
+  "Errors": {
+    "404": {
+      "title": "404 - 页面未找到",
+      "message": "抱歉，您访问的页面不存在。",
+      "homeLink": "返回首页",
+      "previousPageLink": "返回上一页",
+      "helpLink": "访问帮助页面"
+    },
+    "500": {
+      "title": "500 - 服务器错误",
+      "message": "抱歉，服务器发生错误。请稍后再试。"
+    }
+  },
+  "Navigation": {
+    "home": "首页",
+    "about": "关于我们",
+    "contact": "联系我们"
+  },
+  "Buttons": {
+    "submit": "提交",
+    "cancel": "取消",
+    "retry": "重试"
+  },
+  "Metadata": {
+    "title": "多语言网站",
+    "description": "这是一个多语言网站的示例应用程序"
+  }
+}
