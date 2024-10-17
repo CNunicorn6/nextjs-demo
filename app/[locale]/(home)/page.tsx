@@ -43,7 +43,9 @@ export default function Page({ params: { locale } }: Props) {
             <form
                 action={async (formData) => {
                     "use server"
-                    await signIn("credentials", formData)
+                    await signIn("credentials", formData).catch((error) => {
+                        console.error("Sign in failed: ", error);
+                    });
                 }}
             >
                 <input type="hidden" name="csrfToken" value="csrfToken" />
