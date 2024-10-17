@@ -1,0 +1,26 @@
+/* app/not-found.module.css */
+.container {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .message {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .link {
+    display: block;
+    color: #0070f3;
+    margin-top: 1rem;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
