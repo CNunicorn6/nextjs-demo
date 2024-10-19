@@ -26,7 +26,7 @@ export default function GlobalError({
           <p>{t('description')}</p>
           <p>{t('errorMessage', { message: error.message })}</p>
           <button
-            onClick={() => reset()}
+            onClick={reset}
             style={{
               padding: '0.5rem 1rem',
               fontSize: '1rem',

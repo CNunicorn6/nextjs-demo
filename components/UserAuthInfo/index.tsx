@@ -1,5 +1,6 @@
 
-import { auth, signOut } from "@/auth"
+import { auth } from "@/auth"
+import { SignOut } from "../SignOut";
 
 export default async function UserAuthInfo() {
     const session = await auth();
@@ -20,7 +21,7 @@ export default async function UserAuthInfo() {
             <div>id: {session.user?.id}</div>
             <div>name: {session.user?.name}</div>
             <div>email: {session.user?.email}</div>
-            <button onClick={() => signOut()}>退出</button>
+            <SignOut />
         </div>
     )
 }

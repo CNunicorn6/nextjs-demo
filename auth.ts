@@ -32,14 +32,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
         try {
           let user = null;
-          const { email, password } = await signInSchema.parseAsync(
-            credentials
-          );
+          const { email, password } = await signInSchema
+            .parseAsync(credentials)
+            .catch((error) => {
+              console.error(error.errors);
+              throw new Error(error.errors[0].message);
+            });
           // 请求后端API登录接口 获取tokenKey
 
-          setTimeout(async () => {
-            user = await loginByEmail(email, password);
-          }, 4000);
+          user = await loginByEmail(email, password);
 
           if (!user) {
             // No user found, so this is their first attempt to login
@@ -53,12 +54,33 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           if (error instanceof ZodError) {
             // Return `null` to indicate that the credentials are invalid
             console.error(error.errors);
-            throw error.errors;
+            if (error.errors.length) {
+              throw new Error(error.errors[0].message);
+            }
           }
           // Return `null` to indicate that the credentials are invalid
-          return null;
+          throw new Error("Invalid credentials" + error);
         }
       },
     }),
   ],
+
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      // 这里可以添加自定义的登录逻辑
+      console.log('signIn', user, account, profile, email, credentials)
+      return true;
+    },
+    async jwt({ token, user, account, profile }) {
+      // 这里可以添加自定义的jwt逻辑
+      console.log('jwt', token, user, account, profile)
+      return token;
+    },
+    async redirect({ url, baseUrl }) {
+      console.log('redirect url', url)
+      console.log('redirect url', baseUrl)
+      // 处理重定向逻辑
+      return url;
+    },
+  },
 });
