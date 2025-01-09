@@ -5,11 +5,12 @@ import { getMessages } from 'next-intl/server';
 
 export default async function RootLayout({
   children,
-  params: { locale }
+  params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: LocaleType }>
 }) {
+  const { locale } = await params;
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
@@ -17,13 +18,9 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body>
-        <h1>This is Conference Layout</h1>
-        {/* Layout UI */}
-        <main>
-          <NextIntlClientProvider messages={messages}>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
           </NextIntlClientProvider>
-        </main>
       </body>
     </html>
   )

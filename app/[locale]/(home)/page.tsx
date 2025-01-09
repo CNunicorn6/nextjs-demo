@@ -1,18 +1,16 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { signIn } from "@/auth"
 import UserAuthInfo from "@/components/UserAuthInfo"
 
 interface Props {
-    params: {
-        locale: string;
-    };
+    params: Promise<{ locale: string }>
 }
 
-export default function Page({ params: { locale } }: Props) {
+export default async function Page({ params }: Props) {
+    const { locale } = await params;
 
-    const t = useTranslations('HomePage');
-
+    const t = await getTranslations('HomePage');
 
     return (
         <div>
@@ -25,10 +23,10 @@ export default function Page({ params: { locale } }: Props) {
             <h2>{t('language')}: {locale}</h2>
             <label>
                 {t('languageSwitch')}
-                <ul>
+                <ul className="list-none">
                     <li>
-                        <Link href="/" locale='zh-CN'>
-                            {t('zh-CN')}
+                        <Link href="/" locale='zh'>
+                            {t('zh')}
                         </Link>
                     </li>
                     <li>
@@ -43,7 +41,7 @@ export default function Page({ params: { locale } }: Props) {
             <form
                 action={async (formData) => {
                     "use server"
-                    await signIn("credentials", formData).catch((error) => {
+                    await signIn("credentials", formData).catch((error: Error) => {
                         console.error("Sign in failed: ", error);
                     });
                 }}

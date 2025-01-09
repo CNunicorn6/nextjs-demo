@@ -8,7 +8,15 @@
     "language": "语言",
     "languageSwitch": "请选择您的首选语言",
     "en": "英文",
-    "zh-CN": "简体中文"
+    "zh": "简体中文",
+    "Nav": {
+      "home": "首页",
+      "about": "关于我们",
+      "activity": "活动",
+      "cart": "购物车",
+      "account": "账户",
+      "conference": "会议"
+    }
   },
   "AboutPage": {
     "title": "关于我们",

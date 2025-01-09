@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import styles from '@/styles/not-found.module.css'; // 使用 CSS 模块
 
-export default function NotFound() {
-  const t = useTranslations('Errors.404');
+export default async function NotFound() {
+  const t = await getTranslations('Errors.404');
 
   return (
     <div className={styles.container}>
