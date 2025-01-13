@@ -26,8 +26,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        email: {},
-        password: {},
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
         try {
@@ -71,10 +71,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       console.log('signIn', user, account, profile, email, credentials)
       return true;
     },
-    async jwt({ token, user, account, profile }) {
-      // 这里可以添加自定义的jwt逻辑
-      console.log('jwt', token, user, account, profile)
-      return token;
+    async session({ session, token }) {
+      // 这里可以添加自定义的session逻辑
+      console.log('session', session, token);
+      return session;
     },
     async redirect({ url, baseUrl }) {
       console.log('redirect url', url)

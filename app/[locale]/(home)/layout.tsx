@@ -1,13 +1,13 @@
 
-
-import { NextIntlClientProvider } from 'next-intl';
 import { getLangDir } from 'rtl-detect';
-import { getTranslations, getMessages } from 'next-intl/server';
+import { getTranslations, getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 // import Link from 'next/link';
 import NavigationLink from '@/components/NavigationLink';
 import type { Metadata } from 'next/types';
+import Providers from '@/app/providers';
+import '@/app/globals.css';
 
 
 interface PageProps {
@@ -36,6 +36,7 @@ export default async function RootLayout({
   if (!routing.locales.includes(locale as LocaleType)) {
     notFound();
   }
+  setRequestLocale(locale);
   // 创建国际化上下文消息
   const messages = await getMessages();
 
@@ -46,37 +47,37 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={direction}>
       <body>
-        <header>
-          <nav>
-            <ul className="list-none">
-              <li>
-                <NavigationLink href="/">{t('Nav.home')}</NavigationLink>
-              </li>
-              <li>
-                <NavigationLink href="/about">{t('Nav.about')}</NavigationLink>
-              </li>
-              <li>
-                <NavigationLink href="/activity">{t('Nav.activity')}</NavigationLink>
-              </li>
-              <li>
-                <NavigationLink href="/cart">{t('Nav.cart')}</NavigationLink>
-              </li>
-              <li>
-                <NavigationLink href="/account">{t('Nav.account')}</NavigationLink>
-              </li>
-              <li>
-                <NavigationLink href="/conference">{t('Nav.conference')}</NavigationLink>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <h1>This is Home Layout</h1>
-        {/* Layout UI */}
-        <main>
-          <NextIntlClientProvider locale={locale} messages={messages}>
+        <Providers locale={locale} messages={messages}>
+          <header>
+            <nav>
+              <ul className="list-none">
+                <li>
+                  <NavigationLink href="/">{t('Nav.home')}</NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/about">{t('Nav.about')}</NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/activity">{t('Nav.activity')}</NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/cart">{t('Nav.cart')}</NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/account">{t('Nav.account')}</NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/conference">{t('Nav.conference')}</NavigationLink>
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <h1>This is Home Layout</h1>
+          {/* Layout UI */}
+          <main>
             {children}
-          </NextIntlClientProvider>
-        </main>
+          </main>
+        </Providers>
       </body>
     </html>
   )

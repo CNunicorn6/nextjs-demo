@@ -1,6 +1,7 @@
 
 import { auth } from "@/auth"
-import { SignOut } from "../SignOut";
+import SignOut from "../SignOut";
+import SignInForm from '@/components/SignInForm';
 
 export default async function UserAuthInfo() {
     const session = await auth();
@@ -10,6 +11,7 @@ export default async function UserAuthInfo() {
             <div>
                 <div>未登录</div>
                 <div>请登录</div>
+                <SignInForm />
             </div>
         )
     }
